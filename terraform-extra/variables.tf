@@ -3,14 +3,17 @@ variable "filename" {
 }
 
 variable "content" {
-  default = "I love pets!"
-  type = string
+  default     = "I love pets!"
+  type        = string
   description = "the content of the file"
 }
 
 variable "prefix" {
-  default = ["Mr", "Mrs", "Sir"]
-  type = list
+  default = {
+    "state1" = "Mr"
+    "state2" = "Mrs"
+  }
+  type = map(any)
 }
 
 variable "separator" {
@@ -18,12 +21,28 @@ variable "separator" {
 }
 
 variable "length" {
-  default = "2"
-  type = number
+  default     = "2"
+  type        = number
   description = "length of the pet name"
 }
 
 variable "password_change" {
   default = "true"
-  type = bool
+  type    = bool
+}
+
+variable "estudiante" {
+  type = object({
+    name        = string
+    age         = number
+    soft_skills = list(string)
+    rich        = bool
+  })
+
+  default = {
+    name        = "Christian"
+    age         = 22
+    soft_skills = ["cool", "easy-going"]
+    rich        = false
+  }
 }
